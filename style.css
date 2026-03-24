@@ -1,0 +1,910 @@
+/* ========== ROOT VARIABLES ========== */
+:root {
+    --orange-1: #ff6a00;
+    --orange-2: #ff3d00;
+    --black-1: #07070a;
+    --black-2: #0c0d12;
+    --vv-ink: #0c0d12;
+    --vv-text: #f2f2f4;
+    --vv-muted: rgba(242, 242, 244, 0.72);
+    --vv-line: rgba(255, 255, 255, 0.1);
+    --vv-line-2: rgba(255, 255, 255, 0.16);
+    --vv-glow: rgba(255, 106, 0, 0.35);
+    --vv-radius: 18px;
+    --vv-radius-sm: 14px;
+    --vv-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+    --vv-shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.35);
+    --vv-font-display: "Bebas Neue", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    --vv-font-body: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color-scheme: dark;
+}
+
+/* ========== GLOBAL STYLES ========== */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #07070a;
+    color: var(--vv-text);
+    overflow-x: hidden;
+}
+
+/* ========== BACKGROUND & EFFECTS ========== */
+.bg-oranage {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(1200px 800px at 20% 15%, rgba(255, 106, 0, 0.18), transparent 70%),
+        radial-gradient(1000px 700px at 80% 25%, rgba(255, 61, 0, 0.14), transparent 72%),
+        linear-gradient(180deg, #07070a 0%, #0c0d12 100%);
+    will-change: transform;
+}
+
+.vv-grain {
+    position: fixed;
+    inset: -20%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+    transform: rotate(-6deg);
+}
+
+/* ========== SITE LAYOUT ========== */
+.site-content {
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+.vv-container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+/* ========== NAVIGATION ========== */
+.vv-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: linear-gradient(180deg, rgba(7, 7, 10, 0.78), rgba(7, 7, 10, 0.38));
+    border-bottom: 1px solid var(--vv-line);
+}
+
+.vv-navInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+}
+
+.vv-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.vv-brandName {
+    font-family: var(--vv-font-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 1;
+}
+
+.vv-navLinks {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: rgba(242, 242, 244, 0.8);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.vv-link {
+    padding: 10px 10px;
+    border-radius: 999px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.vv-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(242, 242, 244, 0.95);
+}
+
+.vv-mobileContacts {
+    display: none;
+    gap: 8px;
+}
+
+.vv-mobileContactLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(242, 242, 244, 0.8);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.vv-mobileContactLink:hover {
+    border-color: rgba(255, 106, 0, 0.35);
+    background: rgba(255, 106, 0, 0.1);
+    color: rgba(255, 106, 0, 1);
+    transform: translateY(-2px);
+}
+
+/* ========== LOGO & HERO ========== */
+.vv-logo {
+    width: 370px;
+    height: 370px;
+    background: transparent;
+    image-rendering: auto;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 30px rgba(255, 106, 0, 0.15));
+    transition: transform 0.35s ease, filter 0.35s ease;
+    margin: 0 auto;
+    margin-top: -69px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.vv-logo:hover {
+    transform: scale(1.05);
+}
+
+.vv-hero {
+    padding: 72px 0 34px;
+}
+
+.vv-heroGrid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+.vv-heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out 0.1s backwards;
+}
+
+.vv-reelContainer {
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+/* ========== KICKER & HEADINGS ========== */
+.vv-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--vv-line);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(242, 242, 244, 0.75);
+    font-weight: 700;
+    font-size: 25px;
+    font-family: sans-serif;
+    animation: slideInDown 0.6s ease-out;
+}
+
+.vv-kickerDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--orange-1);
+    box-shadow: 0 0 0 6px rgba(255, 106, 0, 0.1);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.vv-h1 {
+    margin: 16px 0 10px;
+    font-family: var(--vv-font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: clamp(26px, 6vw, 78px);
+    line-height: 0.92;
+}
+
+.vv-h1 span {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.62));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.vv-h1 strong {
+    background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.vv-h2 {
+    margin: 0;
+    font-family: var(--vv-font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 22px;
+}
+
+.vv-subtitle {
+    margin: 0;
+    color: rgba(242, 242, 244, 0.7);
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* ========== BUTTONS & PILLS ========== */
+.vv-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+    animation: slideInUp 0.6s ease-out 0.2s backwards;
+}
+
+.vv-pillBtn {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(242, 242, 244, 0.72);
+    background: transparent;
+    transition: all 0.22s ease;
+}
+
+.vv-pillBtn:hover {
+    transform: translateY(-2px);
+    color: rgba(242, 242, 244, 0.9);
+}
+
+.vv-pillBtn[aria-pressed="true"] {
+    color: rgba(10, 10, 12, 0.95);
+    background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+    box-shadow: 0 10px 30px rgba(255, 106, 0, 0.18);
+    transform: translateY(-2px);
+}
+
+.vv-btn {
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(242, 242, 244, 0.92);
+    padding: 12px 14px;
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: all 0.22s ease;
+}
+
+.vv-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vv-btnPrimary {
+    border: 0;
+    color: rgba(12, 12, 14, 0.95);
+    background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
+    box-shadow: 0 16px 48px rgba(255, 106, 0, 0.16);
+}
+
+.vv-btnPrimary:hover {
+    background: linear-gradient(135deg, #ff7a1c, #ff4b1a);
+}
+
+/* ========== STATS SECTION ========== */
+.vv-section {
+    padding: 26px 0 70px;
+}
+
+.vv-sectionHead {
+    margin-bottom: 16px;
+
+}
+
+.vv-headingWrapper {
+    flex: 1;
+}
+
+.vv-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.vv-stat {
+    border: 1px solid var(--vv-line);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--vv-radius-sm);
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+.vv-stat:hover {
+    border-color: rgba(255, 106, 0, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.vv-statTop {
+    font-family: var(--vv-font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.vv-statLabel {
+    margin-top: 2px;
+    color: rgba(242, 242, 244, 0.68);
+    font-size: 12px;
+}
+
+/* ========== GRID & PORTFOLIO ========== */
+.vv-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.vv-item {
+    grid-column: span 4;
+    border: 1px solid var(--vv-line);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.vv-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 106, 0, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(255, 106, 0, 0.15);
+}
+
+.vv-thumb {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    image-rendering: auto;
+    transition: transform 0.3s ease;
+}
+
+.vv-item:hover .vv-thumb {
+    transform: scale(1.05);
+}
+
+/* ========== CARDS & REELS ========== */
+.vv-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border-radius: var(--vv-radius);
+    box-shadow: var(--vv-shadow-soft);
+    overflow: hidden;
+}
+
+.vv-reel {
+    position: relative;
+    padding: 0px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.vv-reelFrame {
+    flex: 1;
+    border-radius: 14px;
+    background:
+        radial-gradient(800px 400px at 25% 15%, rgba(255, 106, 0, 0.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 70%, rgba(255, 61, 0, 0.1), transparent 55%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+    position: relative;
+}
+
+.vv-reelFrame::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(500px 220px at 30% 30%, rgba(255, 106, 0, 0.25), transparent 55%);
+    opacity: 0.65;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.vv-reelVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.02);
+}
+
+.vv-reelOverlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.72));
+}
+
+.vv-reelTitle {
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.vv-reelSub {
+    margin-top: 4px;
+    color: rgba(242, 242, 244, 0.7);
+    font-size: 12px;
+}
+
+/* ========== LIGHTBOX ========== */
+.vv-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 50;
+    animation: fadeIn 0.3s ease;
+}
+
+.vv-lightbox[aria-hidden="false"] {
+    display: flex;
+}
+
+.vv-lightboxPanel {
+    width: min(1020px, 100%);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(180deg, rgba(15, 15, 18, 0.92), rgba(10, 10, 12, 0.82));
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.65);
+    overflow: hidden;
+    animation: slideInUp 0.3s ease;
+}
+
+.vv-lightboxTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 12px;
+    border-bottom: 1px solid var(--vv-line);
+}
+
+.vv-lightboxTitle {
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgba(242, 242, 244, 0.9);
+}
+
+.vv-iconBtn {
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(242, 242, 244, 0.9);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-weight: 900;
+    transition: all 0.2s ease;
+}
+
+.vv-iconBtn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vv-lightboxMedia {
+    width: 100%;
+    max-height: min(72vh, 640px);
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.vv-lightboxMedia img,
+.vv-lightboxMedia video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* ========== FOOTER ========== */
+.vv-footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--vv-line);
+    background: linear-gradient(180deg, rgba(7, 7, 10, 0.5), rgba(12, 13, 18, 0.8));
+}
+
+.vv-footerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.vv-footerTop {
+    color: rgba(242, 242, 244, 0.62);
+    font-size: 12px;
+    text-align: center;
+}
+
+.vv-footerTop p {
+    margin: 0;
+}
+
+.vv-footerLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.vv-footerLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(242, 242, 244, 0.8);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.vv-footerLink:hover {
+    border-color: rgba(255, 106, 0, 0.35);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(242, 242, 244, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 106, 0, 0.1);
+}
+
+.vv-socialLink:hover {
+    border-color: var(--orange-1);
+    background: rgba(255, 106, 0, 0.1);
+    color: var(--orange-1);
+}
+
+.vv-iconEmail,
+.vv-iconPhone,
+.vv-iconInsta {
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 6px rgba(255, 106, 0, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 0 12px rgba(255, 106, 0, 0.05);
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 10px rgba(255, 106, 0, 0.3));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px rgba(255, 106, 0, 0.5));
+    }
+}
+
+/* ========== SCROLL ANIMATION ========== */
+[data-animate] {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+[data-animate="stat"] {
+    animation-delay: 0.1s;
+}
+
+[data-animate="portfolio"] {
+    animation-delay: calc(0.1s + (var(--index, 0) * 0.05s));
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 900px) {
+    .vv-heroGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .vv-navLinks {
+        display: none;
+    }
+
+    .vv-mobileContacts {
+        display: flex;
+    }
+
+    .vv-item {
+        grid-column: span 6;
+    }
+
+    .vv-sectionHead {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vv-pill {
+        align-self: flex-start;
+        margin-top: 10px;
+    }
+
+    .vv-logo {
+        width: 260px;
+        height: 260px;
+        margin-top: -95px;
+    }
+
+    .vv-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .vv-footerLinks {
+        gap: 12px;
+    }
+
+    .vv-footerLink {
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 560px) {
+    .vv-container {
+        width: min(1120px, calc(100% - 28px));
+    }
+
+    .vv-kicker {
+        font-size: 18px;
+        margin-bottom: 33px;
+    }
+
+    .vv-hero {
+        padding-top: 58px;
+    }
+
+    .vv-item {
+        grid-column: span 12;
+    }
+
+    .vv-sectionHead {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .vv-headingWrapper {
+        order: 1;
+    }
+
+    .vv-pill {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .vv-pillBtn {
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+
+    .vv-h2 {
+        font-size: 18px;
+    }
+
+    .vv-subtitle {
+        font-size: 12px;
+    }
+
+    .vv-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .vv-stat {
+        padding: 10px;
+    }
+
+    .vv-statTop {
+        font-size: 16px;
+    }
+
+    .vv-reelVideo {
+        width: 100%;
+        height: auto;
+        filter: none;
+    }
+
+    .vv-thumb {
+        width: max-content;
+        height: 500px;
+        filter: saturate(1.02);
+    }
+
+    .vv-h1 {
+        font-size: clamp(24px, 8vw, 44px);
+    }
+
+    .vv-footerLinks {
+        gap: 12px;
+    }
+
+    .vv-footerLink {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .vv-iconEmail,
+    .vv-iconPhone,
+    .vv-iconInsta {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .vv-kicker {
+        font-size: 16px;
+        padding: 12px 18px;
+        gap: 20px;
+    }
+
+    .vv-h1 {
+        font-size: clamp(20px, 6vw, 32px);
+    }
+
+    .vv-pillBtn {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .vv-container {
+        width: calc(100% - 16px);
+    }
+
+    .vv-logo {
+        width: 200px;
+        height: 200px;
+        margin-top: -80px;
+    }
+
+    .vv-footerContent {
+        gap: 16px;
+    }
+
+    .vv-footerLinks {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .vv-footerLink {
+        width: 100%;
+        justify-content: center;
+        padding: 10px 12px;
+    }
+}
